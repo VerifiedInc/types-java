@@ -27,9 +27,13 @@ credential/v1/CredentialRequestOrBuilder.class
 presentation/v1/UnsignedPresentation$1.class
 presentation/v1/PresentationRequestOrBuilder.class
 credential/v1/CredentialStatus$Builder.class
+id/unum/types/VerifiedStatus$VerifiedStatusBuilder.class
+id/unum/types/VerifiedStatus.class
 credential/v1/Credential.class
 presentation/v1/PresentationRequest$Builder.class
+id/unum/enums/CredentialStatusOptions.class
 presentation/v1/PresentationOrBuilder.class
+id/unum/enums/PresentationTypes.class
 crypto/v1/Proof.class
 presentation/v1/UnsignedPresentationRequest$Builder.class
 credential/v1/CredentialRequest$1.class
