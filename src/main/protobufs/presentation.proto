@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package presentation.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "PresentationProto";
+
+import "credential.proto";
+import "proof.proto";
+import "google/protobuf/timestamp.proto";
+
+/**
+ * Encapsulates an unsigned presentation attributes.
+ */
+message UnsignedPresentation {
+  repeated string context = 1;
+  repeated string type = 2;
+  string presentation_request_id = 3;
+  string verifierDid = 4;
+  repeated credential.v1.Credential verifiable_credential = 5;
+}
+
+/**
+ * Encapsulates addition attributes to the unsigned presentation entity to create a Presentation entity.
+ * Tightly coupled with UnsignedPresentation.
+ */
+message Presentation {
+  repeated string context = 1;
+  repeated string type = 2;
+  string presentation_request_id = 3;
+  string verifierDid = 4;
+  repeated credential.v1.Credential verifiable_credential = 5;
+  crypto.v1.Proof proof = 6;
+}
+
+/**
+ * Encapsulates request attributes for the purposes of requesting presentation of credentials.
+ */
+message UnsignedPresentationRequest {
+  repeated credential.v1.CredentialRequest credential_requests = 1;
+  string holder_app_uuid = 2;
+  string verifier = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  string metadata = 7; // a string representation of an ambiguous object. Note: the Any type does not work because still needs a scheme (but can be assigned dymanically) & Struct does not work becuase not determinsitcally serialzied across langauges
+  string uuid = 8;
+  string id = 9; // an indentifier for related presetnation requests across versions
+  string version = 10;
+}
+
+/**
+ * Encapsulates request attributes for the purposes of requesting presentation of credentials with the addition of a proof.
+ * Tighting coupled to UnsignedPresentationRequest.
+ */
+message PresentationRequest {
+  repeated credential.v1.CredentialRequest credential_requests = 1;
+  string holder_app_uuid = 2;
+  string verifier = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  string metadata = 7; // a string representation of an ambiguous object. Note: the Any type does not work because still needs a scheme (but can be assigned dymanically) & Struct does not work becuase not determinsitcally serialzied across langauges
+  string uuid = 8;
+  crypto.v1.Proof proof = 9;
+  string id = 10; // an indentifier for related presetnation requests across versions
+  string version = 11;
+}
