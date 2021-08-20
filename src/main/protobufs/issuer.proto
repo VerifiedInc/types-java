@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package issuer.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "IssuerProto";
+option java_package = "id.unum.protos.issuer.v1";
+
+import "google/protobuf/timestamp.proto";
+
+/**
+ * Object to encapsulate an Issuer entity
+ */
+message Issuer {
+  string uuid = 1;
+  string customer_uuid = 2;
+  string name = 3;
+  string did = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  bool is_authorized = 7;
+  string api_key = 8;
+}
+
+// message IssuerInfoMap {
+
+// }
+

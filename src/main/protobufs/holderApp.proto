@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package holderApp.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "HolderAppProto";
+option java_package = "id.unum.protos.holderApp.v1";
+
+/**
+ * Object to encapsulate basic Holder App entity info
+ */
+message HolderAppInfo {
+  string name = 1;
+  string deeplink_button_img = 2; // base64 string representation of image
+  string app_store_url = 3;
+  string play_store_url = 4;
+}

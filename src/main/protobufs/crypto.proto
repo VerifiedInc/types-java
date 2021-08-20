@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package crypto.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "CryptoProto";
+option java_package = "id.unum.protos.crypto.v1";
+
+import "google/protobuf/timestamp.proto";
+
+/**
+ * Object to encapsulate encrypted data
+ */
+ message EncryptedKey {
+  string iv = 1;
+  string key = 2;
+  string algorithm = 3;
+  string did = 4;
+}
+
+/**
+ * Object to encapsulate encrypted data
+ */
+message EncryptedData {
+  string data = 1;
+  EncryptedKey key = 2;
+}
+
+/**
+ * Enum to encapsulate encoding options
+ */
+enum Encoding {
+    PEM = 0;
+    BASE_58 = 1;
+}
+
+/**
+ * Enum to encapsulate encoding options
+ */
+ enum Status {
+    INVALID = 0;
+    VALID = 1;
+}
+
+/**
+ * Object to encapsulate public key info
+ */
+ message PublicKeyInfo {
+    string id = 1;
+    string public_key = 2;
+    Encoding encoding = 3;
+    string type = 4;
+    Status status = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+  }
+

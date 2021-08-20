@@ -1,9 +1,10 @@
 syntax = "proto3";
 
-package crypto.v1;
+package proof.v1;
 
 option java_multiple_files = true;
 option java_outer_classname = "ProofProto";
+option java_package = "id.unum.protos.proof.v1";
 
 import "google/protobuf/timestamp.proto";
 

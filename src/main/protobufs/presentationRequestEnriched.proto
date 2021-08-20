@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package presentationRequestEnriched.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "PresentationRequestEnrichedProto";
+option java_package = "id.unum.protos.presentationRequestEnriched.v1";
+
+import "presentationRequest.proto";
+import "verifier.proto";
+import "holderApp.proto";
+import "google/protobuf/struct.proto";
+
+/**
+ * Encapsulates presentation request attributes as they are retuned from Unum ID saas.
+ */
+message PresentationRequestEnriched {
+    presentationRequest.v1.PresentationRequest presentationRequest = 1;
+    verifier.v1.VerifierInfo verifierInfo = 2;
+    google.protobuf.Struct issuers = 3; // a map of issuer metadata keyed on the issuer's did
+    holderApp.v1.HolderAppInfo holderApp = 4;
+    string deeplink = 5;
+    string qrCode = 6;
+}

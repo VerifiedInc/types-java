@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package verifier.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "VerifierProto";
+option java_package = "id.unum.protos.verifier.v1";
+
+import "google/protobuf/timestamp.proto";
+
+/**
+ * Object to encapsulate Target information regarding customer's api versioning.
+ */
+ message TargetInfo {
+    string version = 1;
+    string url = 2;
+  }
+
+/**
+ * Object to encapsulate Version information.
+ */
+ message VersionInfo {
+  string sdk_version = 1;
+  TargetInfo url = 2;
+}
+
+/**
+ * Object to encapsulate a Verifier entity
+ */
+message Verifier {
+  string uuid = 1;
+  string customer_uuid = 2;
+  string name = 3;
+  string did = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  bool is_authorized = 7;
+  string api_key = 8;
+  string url = 9;
+  VersionInfo version_info = 10;
+}
+
+/**
+ * Object to encapsulate basic verifier info
+ */
+ message VerifierInfo {
+    string did = 1;
+    string name = 2;
+    string url = 3;
+  }
