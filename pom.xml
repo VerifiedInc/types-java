@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
@@ -212,12 +212,34 @@
                             <inputDirectories>
                                 <include>src/main/protobufs</include>
                             </inputDirectories>
-                            <!--                            <outputDirectory>src/generated-sources/proto</outputDirectory>-->
-<!--                            <outputDirectory>src/main/java/id/unum/protos</outputDirectory>-->
-
+                            <!--<outputDirectory>src/generated-sources/proto</outputDirectory>-->
+                            <!--<outputDirectory>src/main/java/id/unum/protos</outputDirectory>-->
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
             </plugin>
         </plugins>
     </build>
