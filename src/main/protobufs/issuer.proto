@@ -7,6 +7,7 @@ option java_outer_classname = "IssuerProto";
 option java_package = "id.unum.protos.issuer.v1";
 
 import "google/protobuf/timestamp.proto";
+import "crypto.proto";
 
 /**
  * Object to encapsulate an Issuer entity
@@ -22,3 +23,20 @@ message Issuer {
   string api_key = 8;
 }
 
+/**
+ * Object to encapsulate an Issuer entity
+ */
+ message RegisterIssuerRequest {
+    string customer_uuid = 1;
+    repeated crypto.v1.PublicKeyInfo publicKeyInfo  = 2;
+}
+
+/**
+ * Object to encapsulate an Issuer entity
+ */
+ message RegisterIssuerResponse {
+    string customer_uuid = 1;
+    string name = 2;
+    bool is_authorized = 3;
+    string api_key = 4;
+  }
