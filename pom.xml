@@ -192,32 +192,46 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.github.os72</groupId>
-                <artifactId>protoc-jar-maven-plugin</artifactId>
-                <version>3.6.0.1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <protocVersion>3.6.0</protocVersion>
-                            <includeMavenTypes>direct</includeMavenTypes>
-                            <inputDirectories>
-                                <include>src/main/protobufs</include>
-                            </inputDirectories>
-                            <!--<outputDirectory>src/generated-sources/proto</outputDirectory>-->
-                            <!--<outputDirectory>src/main/java/id/unum/protos</outputDirectory>-->
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>de.m3y.maven</groupId>-->
+            <!--                <artifactId>wire-maven-plugin</artifactId>-->
+            <!--                <version>1.0</version> &lt;!&ndash; Check for latest version! &ndash;&gt;-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>generate-sources</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate-sources</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>com.github.os72</groupId>-->
+            <!--                <artifactId>protoc-jar-maven-plugin</artifactId>-->
+            <!--                <version>3.6.0.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>generate-sources</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>run</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <protocVersion>3.6.0</protocVersion>-->
+            <!--                            <includeMavenTypes>direct</includeMavenTypes>-->
+            <!--                            <inputDirectories>-->
+            <!--                                <include>src/main/protobufs</include>-->
+            <!--                            </inputDirectories>-->
+            <!--                            &lt;!&ndash;<outputDirectory>src/generated-sources/proto</outputDirectory>&ndash;&gt;-->
+            <!--                            &lt;!&ndash;<outputDirectory>src/main/java/id/unum/protos</outputDirectory>&ndash;&gt;-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
