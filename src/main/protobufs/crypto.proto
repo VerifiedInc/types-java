@@ -26,21 +26,32 @@ message EncryptedData {
   EncryptedKey key = 2;
 }
 
-/**
- * Enum to encapsulate encoding options
- */
-enum Encoding {
-    PEM = 0;
-    BASE_58 = 1;
-}
+// Probably do not want to use this because could awkard to get the string representation
+// i.e. String pemName = encoding.getValueDescriptor().getName(); //Encoding="PEM"
+// ref: https://stackoverflow.com/questions/17799883/how-to-print-enum-names-instead-of-int-value-of-a-protocol-buffer-java/38795852 
+// /**
+//  * Enum to encapsulate encoding options
+//  */
+// enum Encoding {
+//     PEM = 0;
+//     BASE_58 = 1;
+// }
 
-/**
- * Enum to encapsulate encoding options
- */
- enum Status {
-    INVALID = 0;
-    VALID = 1;
-}
+// /**
+//  * Enum to encapsulate encoding options
+//  */
+//  enum KeyType {
+//     RSA = 0;
+//     SECP256R1 = 1;
+// }
+
+// /**
+//  * Enum to encapsulate encoding options
+//  */
+//  enum Status {
+//     INVALID = 0;
+//     VALID = 1;
+// }
 
 /**
  * Object to encapsulate public key info
@@ -48,10 +59,25 @@ enum Encoding {
  message PublicKeyInfo {
     string id = 1;
     string public_key = 2;
-    Encoding encoding = 3;
+    string encoding = 3;
     string type = 4;
-    Status status = 5;
+    string status = 5;
     google.protobuf.Timestamp created_at = 6;
     google.protobuf.Timestamp updated_at = 7;
-  }
+}
 
+/**
+ * Object to encapsulate a key pair
+ */
+ message KeyPair {
+    string privateKey = 1;
+    string publicKey = 2;
+}
+
+/**
+ * Object to encapsulate a key pair set
+ */
+ message KeyPairSet {
+    KeyPair signing = 1;
+    KeyPair encryption = 2;
+}
