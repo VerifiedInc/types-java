@@ -1,4 +1,4 @@
-package id.unum.types;
+package id.unum.types.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
