@@ -10,9 +10,6 @@ import java.util.HashMap;
 @Data
 @NoArgsConstructor
 public class CredentialSubject extends HashMap<String, String> {
-//    String id;
-//    String data;
-
     public CredentialSubject(String id) {
         super();
         super.put("id", id);
