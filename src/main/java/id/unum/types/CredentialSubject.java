@@ -5,9 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
+
 @Data
 @NoArgsConstructor
-public class CredentialSubject {
-    String id;
-    String data;
+public class CredentialSubject extends HashMap<String, String> {
+//    String id;
+//    String data;
+
+    public CredentialSubject(String id) {
+        super();
+        super.put("id", id);
+    }
+
+    public String getId() {
+        return super.get("id");
+    }
 }
