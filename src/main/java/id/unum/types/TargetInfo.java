@@ -1,4 +1,4 @@
-package id.unum.types.dto;
+package id.unum.types;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

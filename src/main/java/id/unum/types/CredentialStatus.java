@@ -1,13 +1,11 @@
 package id.unum.types;
 
-import com.google.gson.JsonObject;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CredentialSubject {
+public class CredentialStatus {
     String id;
-    String data;
+    String type;
 }
