@@ -1,6 +1,6 @@
 package id.unum.types.dto;
 
-import lombok.AllArgsConstructor;
+import id.unum.types.TargetInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
