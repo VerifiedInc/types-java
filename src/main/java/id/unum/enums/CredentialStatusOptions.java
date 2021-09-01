@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum CredentialStatusOptions {
-    VALID("VALID"),
-    REVOKED("REVOKED");
+    valid("valid"),
+    revoked("revoked");
 
     @Getter
     private String value;
