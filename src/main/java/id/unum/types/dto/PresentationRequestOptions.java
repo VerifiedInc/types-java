@@ -1,6 +1,7 @@
 package id.unum.types.dto;
 
-import com.google.gson.JsonObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.json.JSONObject;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PresentationRequestOptions {
     List<CredentialRequest> credentialRequests;
     @Nullable
@@ -18,7 +20,7 @@ public class PresentationRequestOptions {
     @Nullable
     String expiresAt;
     String holderAppUuid;
-    JsonObject metadata;
+    JSONObject metadata;
     String verifier; // did
     String version;
 }
