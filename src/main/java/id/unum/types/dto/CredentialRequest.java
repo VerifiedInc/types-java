@@ -1,12 +1,12 @@
 package id.unum.types.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class CredentialRequest {
     String type; // The string matching the desire credential type.
     List<String> issuers; // List of acceptable issuer DIDs that have issued the credential.
