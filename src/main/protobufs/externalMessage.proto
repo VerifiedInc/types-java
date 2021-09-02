@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package externalMessage.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "ExternalMessageProto";
+option java_package = "id.unum.protos.externalMessage.v1";
+
+/**
+ * Object to encapsulate encrypted data
+ */
+ message ExternalMessage {
+    string to = 1;
+    string deeplink = 2;
+  }
