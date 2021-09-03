@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>1.9-SNAPSHOT</version>
+    <version>1.10-SNAPSHOT</version>
 
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
