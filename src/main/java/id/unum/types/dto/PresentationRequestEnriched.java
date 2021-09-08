@@ -14,7 +14,7 @@ import java.util.Map;
 public class PresentationRequestEnriched {
     PresentationRequest presentationRequest;
     HolderAppInfo holderApp;
-    VerifierInfo verifierInfo;
+    VerifierInfo verifier;
     Map<String, IssuerInfo> issuers; // keyed on issuer did
     String deeplink;
     String qrCode;
