@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package receipt.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "ReceiptProto";
+option java_package = "id.unum.protos.receipt.v1";
+
+import "google/protobuf/timestamp.proto";
+
+/**
+ * Object to encapsulate a receipt object from the saas.
+ */
+message Receipt {
+    string uuid = 1;
+    google.protobuf.Timestamp createdAt = 2;
+    google.protobuf.Timestamp updatedAt = 3;
+    repeated string type = 4;
+    string subject = 5;
+    string verifier = 6;
+    string issuer = 7;
+    string customer = 8;
+}
+
+/**
+ * Object to encapsulate presentation verified receipt data
+ */
+ message PresentationVerifedReceiptOptions {
+    repeated string type = 1;
+    string verifier = 2; // did
+    string subject = 3; // did
+    Verified data = 4;
+}
+
+message Verified {
+    bool isVerified = 1;
+    repeated string credentialTypes = 2;
+    repeated string issuers = 3;
+}
