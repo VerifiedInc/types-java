@@ -14,6 +14,6 @@ public class PublicKeyInfo {
     String encoding;
     String type;
     String status;
-    Date createdAt;
-    Date updatedAt;
+    String createdAt;
+    String updatedAt;
 }
