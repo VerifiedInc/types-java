@@ -30,14 +30,3 @@ message Issuer {
     string customer_uuid = 1;
     repeated crypto.v1.PublicKeyInfo publicKeyInfo  = 2;
 }
-
-// /**
-//  * Object to encapsulate an Issuer entity
-//  */
-//  message RegisterIssuerResponse {
-//     string uuid = 1;
-//     string customer_uuid = 2;
-//     string name = 3;
-//     bool is_authorized = 4;
-//     string api_key = 5;
-//   }

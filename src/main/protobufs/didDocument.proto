@@ -30,18 +30,3 @@ import "crypto.proto";
      string serviceEndpoint = 2;
      string type = 3;
  }
-
-// @JsonProperty("@context")
-// List<String> context;
-// String id;
-// String created;
-// String updated;
-// List<PublicKeyInfo> publicKey;
-// List<DidDocumentService> service;
-
-// @NoArgsConstructor
-// public class DidDocumentService {
-//     String id;
-//     String serviceEndpoint;
-//     String type;
-// }
