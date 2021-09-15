@@ -37,7 +37,7 @@ message Verifier {
   bool is_authorized = 7;
   string api_key = 8;
   string url = 9;
-  VersionInfo version_info = 10;
+  repeated VersionInfo version_info = 10;
 }
 
 /**
