@@ -6,6 +6,7 @@ option java_multiple_files = true;
 option java_outer_classname = "VerifierProto";
 option java_package = "id.unum.protos.verifier.v1";
 
+import "crypto.proto";
 import "google/protobuf/timestamp.proto";
 
 /**
@@ -46,5 +47,5 @@ message Verifier {
  message VerifierInfo {
     string did = 1;
     string name = 2;
-    string url = 3;
+    crypto.v1.PublicKeyInfo encryptionPublicKey = 3;
   }
