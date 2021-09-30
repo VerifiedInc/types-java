@@ -10,6 +10,5 @@ import javax.annotation.Nullable;
 public class VerifierInfo {
     String did;
     String name;
-    @Nullable
-    String url;
+    PublicKeyInfo encryptionPublicKey;
 }

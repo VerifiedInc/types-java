@@ -16,7 +16,7 @@ import "google/protobuf/struct.proto";
  */
 message PresentationRequestEnriched {
     presentationRequest.v1.PresentationRequest presentationRequest = 1;
-    verifier.v1.VerifierInfo verifierInfo = 2;
+    verifier.v1.VerifierInfo verifier = 2;
     google.protobuf.Struct issuers = 3; // a map of issuer metadata keyed on the issuer's did
     holderApp.v1.HolderAppInfo holderApp = 4;
     string deeplink = 5;
