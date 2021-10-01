@@ -125,6 +125,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/types-java-${{ env.RELEASE_VERSION }}-javadoc.jar
-          asset_name: ${{ matrix.asset_name }}
-          tag: ${{ github.ref }}
+          file: target/types-java-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
+          #          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ env.RELEASE_VERSION }}
+          body: ${{ env.TAG_MESSAGE }}
+          commitish: pub # todo make main
