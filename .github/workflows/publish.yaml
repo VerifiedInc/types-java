@@ -88,7 +88,6 @@ jobs:
           current-version: ${{ env.RELEASE_VERSION }}
           version-fragment: 'bug'
 
-      # Note: I know this is a semi maven anti-pattern, SNAPSHOT versions normally precede release versions.
       - name: Add SNAPSHOT to new version
         run: mvn versions:set -DnewVersion=${{ steps.bump_version.outputs.next-version }}-SNAPSHOT
 
@@ -100,7 +99,7 @@ jobs:
           author_email: liam@unum.id
           message: '[Release ${{ env.RELEASE_VERSION }}] ${{ env.TAG_MESSAGE }}'
           add: '["pom.xml"]'
-          branch: pub # todo make main
+          branch: main
 
       # ref: https://github.com/actions/create-release
       #      - name: Create Release
@@ -118,15 +117,16 @@ jobs:
       #          #   - Second Change
       #          draft: false
       #          prerelease: false
-      #          commitish: pub # todo make main
+      #          commitish: main
 
       # ref: https://github.com/marketplace/actions/upload-files-to-a-github-release
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/types-java-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
-          #          asset_name: ${{ matrix.asset_name }}
+          # opting to go with thin jar here because not really an executable project
+          #          file: target/types-java-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
+          file: target/types-java-${{ env.RELEASE_VERSION }}.jar
           tag: ${{ env.RELEASE_VERSION }}
           body: ${{ env.TAG_MESSAGE }}
-          commitish: pub # todo make main
+#          commitish: pub # sadly doesn't work with this action, always release from main, which in reality is fine.
