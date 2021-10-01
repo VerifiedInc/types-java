@@ -90,7 +90,7 @@ jobs:
 
       # Note: I know this is a semi maven anti-pattern, SNAPSHOT versions normally precede release versions.
       - name: Add SNAPSHOT to new version
-        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}-SNAPSHOT
+        run: mvn versions:set -DnewVersion=${{ steps.bump_version.outputs.next-version }}-SNAPSHOT
 
       # ref: https://github.com/marketplace/actions/add-commit
       - name: Commit changes
