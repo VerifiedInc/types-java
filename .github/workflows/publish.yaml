@@ -48,7 +48,8 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn --batch-mode deploy
+        #        run: mvn --batch-mode deploy
+        run: mvn deploy
         env:
           GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
 
@@ -98,7 +99,7 @@ jobs:
           author_email: liam@unum.id
           message: '[Release ${{ env.RELEASE_VERSION }}] ${{ env.TAG_MESSAGE }}'
           add: '["pom.xml"]'
-          branch: main
+          branch: pub # todo make main
 
       # ref: https://github.com/actions/create-release
       - name: Create Release
@@ -116,4 +117,4 @@ jobs:
           #   - Second Change
           draft: false
           prerelease: false
-          commitish: pub # todo make maing
+          commitish: pub # todo make main
