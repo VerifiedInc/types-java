@@ -7,7 +7,7 @@ on:
 
 jobs:
   releaseJob:
-    name: Update version & package
+    name: Publish artifact & update version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -44,8 +44,8 @@ jobs:
       - name: Bump POM Version
         run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+      #      - name: Build with Maven
+      #        run: mvn -B package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
         #        run: mvn --batch-mode deploy
