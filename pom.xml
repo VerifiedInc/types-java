@@ -7,6 +7,33 @@
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
     <version>0.0.9-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>UnumID Java Types</name>
+    <description>An library of java objects used in the Unum ID ecosystem</description>
+    <url>https://github.com/UnumID/types-java</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Unum ID Admin</name>
+            <email>admin@unum.id</email>
+            <organization>Unum ID</organization>
+            <organizationUrl>https://www.unum.id</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/UnumID/types-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com/UnumID/types-java.git</developerConnection>
+        <url>https://github.com/UnumID/types-java/tree/main</url>
+    </scm>
 
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
@@ -29,25 +56,25 @@
     <!--        <downloadUrl>http://mojo.codehaus.org/</downloadUrl>-->
     <!--        <status>deployed</status>-->
     <!--    </distributionManagement>-->
-    <!--    <distributionManagement>-->
-    <!--        <snapshotRepository>-->
-    <!--            <id>ossrh</id>-->
-    <!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-    <!--        </snapshotRepository>-->
-    <!--        <repository>-->
-    <!--            <id>ossrh</id>-->
-    <!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-    <!--        </repository>-->
-    <!--    </distributionManagement>-->
-
-    <!--    ref: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#publishing-a-package-->
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>github</id>
-            <name>GitHub UnumID Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/unumid/types-java</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <!--    ref: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#publishing-a-package-->
+    <!--    <distributionManagement>-->
+    <!--        <repository>-->
+    <!--            <id>github</id>-->
+    <!--            <name>GitHub UnumID Apache Maven Packages</name>-->
+    <!--            <url>https://maven.pkg.github.com/unumid/types-java</url>-->
+    <!--        </repository>-->
+    <!--    </distributionManagement>-->
 
     <dependencies>
         <dependency>
