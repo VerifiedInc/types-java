@@ -34,6 +34,9 @@ jobs:
           echo ${{ env.TAG_VERSION }}
           echo ${{ env.TAG_MESSAGE }}
 
+      - name: Bump POM Version
+        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
+
       #      - name: setup java
       #        uses: actions/setup-java@v2
       #        with:
@@ -41,12 +44,8 @@ jobs:
       #          java-version: '16'
       #          cache: 'maven'
       #
-      #      - name: Bump POM Version
-      #        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
-      #
-      #      #      - name: Build with Maven
-      #      #        run: mvn -B package --file pom.xml
-      #
+
+
       #      - name: Publish to GitHub Packages Apache Maven
       #        #        run: mvn --batch-mode deploy
       #        run: mvn deploy
@@ -55,9 +54,10 @@ jobs:
 
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v2
-        with: # running setup-java again overwrites the settings.xml
-          distribution: 'temurin'
-          java-version: '11'
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '16'
+          cache: 'maven'
           server-id: maven # Value of the distributionManagement/repository/id field of the pom.xml
           server-username: ${{ secrets.OSSRH_USERNAME }} #MAVEN_USERNAME # env variable for username in deploy
           server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }} #MAVEN_CENTRAL_TOKEN # env variable for token in deploy
@@ -81,6 +81,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # ref: https://github.com/marketplace/actions/increment-semantic-version
       - name: Bump release version
         id: bump_version
         uses: christian-draeger/increment-semantic-version@1.0.2
