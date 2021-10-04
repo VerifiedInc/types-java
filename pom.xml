@@ -60,11 +60,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -319,11 +319,13 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <!-- This is necessary for gpg to not try to use the pinentry programs -->
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
+                            <!--                            &lt;!&ndash; This is necessary for gpg to not try to use the pinentry programs &ndash;&gt;-->
+                            <!--                            <gpgArguments>-->
+                            <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
+                            <!--                                <arg>loopback</arg>-->
+                            <!--                            </gpgArguments>-->
+                            <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>
+                            <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                         </configuration>
                     </execution>
                 </executions>

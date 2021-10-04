@@ -129,4 +129,4 @@ jobs:
 #          file: target/types-java-${{ env.RELEASE_VERSION }}.jar
 #          tag: ${{ env.RELEASE_VERSION }}
 #          body: ${{ env.TAG_MESSAGE }}
-##          commitish: pub # sadly doesn't work with this action, always release from main, which in reality is fine.
+#          commitish: pub # sadly doesn't work with this action, always release from main, which in reality is fine.
