@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
     <packaging>jar</packaging>
 
     <!--The following info is necessary per https://central.sonatype.org/publish/requirements/-->
@@ -77,9 +77,13 @@
     <!--        </repository>-->
     <!--    </distributionManagement>-->
 
+    <!-- ref: https://www.baeldung.com/maven-profiles-->
     <profiles>
         <profile>
             <id>github</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <distributionManagement>
                 <repository>
                     <id>github</id>
@@ -90,9 +94,6 @@
         </profile>
         <profile>
             <id>ossrh</id>
-            <!--            <activation>-->
-            <!--                <activeByDefault>true</activeByDefault>-->
-            <!--            </activation>-->
             <activation>
                 <property>
                     <name>mvnPub</name>
@@ -168,11 +169,11 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <!--                            &lt;!&ndash; This is necessary for gpg to not try to use the pinentry programs &ndash;&gt;-->
-                                    <!--                            <gpgArguments>-->
-                                    <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
-                                    <!--                                <arg>loopback</arg>-->
-                                    <!--                            </gpgArguments>-->
+                                    <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
                                     <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>
                                     <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                                 </configuration>
