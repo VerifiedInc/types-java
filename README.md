@@ -24,7 +24,7 @@ next patch SNAPSHOT version, make a release commit, and make a Github Release. T
 release message so please make it meaningful. For
 example, `git tag v1.1.1 -m "Updated the SDK with a new CI job" && push origin v1.1.1`.
 
-Note: one can manually deploy an artifact to Github Maven repo via `mvn clean deploy -P ossrh`, if they have the proper
+Note: one can manually deploy an artifact to Github Maven repo via `mvn clean deploy -P github`, if they have the proper
 Github access tokens via in m2 settings.xml, but it is not advised.
 
 ### Maven Central
