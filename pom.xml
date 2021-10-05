@@ -49,8 +49,9 @@
         <log4j.version>2.14.0</log4j.version>
         <org.hyperledger.fabric.sdktest.ITSuite>IntegrationSuite.java</org.hyperledger.fabric.sdktest.ITSuite>
         <gpg.executable>gpg2</gpg.executable>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <gpg.keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</gpg.keyname>
     </properties>
 
     <!--    <distributionManagement>-->
@@ -174,6 +175,7 @@
                                         <arg>--pinentry-mode</arg>
                                         <arg>loopback</arg>
                                     </gpgArguments>
+                                    <!--                                    <keyname>${gpg.keyname}</keyname>-->
 <!--                                    <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>-->
                                     <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                                 </configuration>
