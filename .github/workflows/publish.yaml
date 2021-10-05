@@ -109,7 +109,7 @@ jobs:
           author_email: liam@unum.id
           message: '[Release ${{ env.RELEASE_VERSION }}] ${{ env.TAG_MESSAGE }}'
           add: '["pom.xml"]'
-          branch: profiles # todo main
+          branch: main
 
       # ref: https://github.com/actions/create-release
       - name: Create Release
@@ -127,7 +127,7 @@ jobs:
           #   - Second Change
           draft: false
           prerelease: false
-          commitish: profiles # todo main
+          commitish: main
 
 #      # ref: https://github.com/marketplace/actions/upload-files-to-a-github-release
 #      - name: Upload binaries to release
