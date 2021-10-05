@@ -174,7 +174,7 @@
                                         <arg>--pinentry-mode</arg>
                                         <arg>loopback</arg>
                                     </gpgArguments>
-                                    <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>
+<!--                                    <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>-->
                                     <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                                 </configuration>
                             </execution>
