@@ -58,6 +58,7 @@ jobs:
         #          distribution: 'zulu' # See 'Supported distributions' for available options
         with:
           java-version: 11
+          distribution: 'zulu'
           server-id: ossrh
 
           cache: 'maven'
