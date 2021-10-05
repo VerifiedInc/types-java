@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!--The following info is necessary per https://central.sonatype.org/publish/requirements/-->
@@ -39,19 +39,12 @@
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
         <protobuf.version>3.17.3</protobuf.version>
-        <bouncycastle.version>1.69</bouncycastle.version>
         <httpclient.version>4.5.13</httpclient.version>
-        <javadoc.version>3.2.0</javadoc.version>
-        <skipITs>true</skipITs>
-        <alpn-boot-version>8.1.7.v20160121</alpn-boot-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jacoco.version>0.8.5</jacoco.version>
         <log4j.version>2.14.0</log4j.version>
-        <org.hyperledger.fabric.sdktest.ITSuite>IntegrationSuite.java</org.hyperledger.fabric.sdktest.ITSuite>
-        <gpg.executable>gpg2</gpg.executable>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gpg.executable>gpg</gpg.executable>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-<!--        <gpg.keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</gpg.keyname>-->
     </properties>
 
     <!-- ref: https://www.baeldung.com/maven-profiles-->
@@ -78,7 +71,7 @@
                 </property>
             </activation>
             <properties>
-                <gpg.executable>gpg</gpg.executable>
+                <gpg.executable>${gpg.executable}</gpg.executable>
             </properties>
             <distributionManagement>
                 <snapshotRepository>
@@ -152,8 +145,6 @@
                                         <arg>loopback</arg>
                                     </gpgArguments>
                                     <keyname>${gpg.keyname}</keyname>
-<!--                                    <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>-->
-                                    <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                                 </configuration>
                             </execution>
                         </executions>
@@ -197,27 +188,6 @@
             <artifactId>protobuf-java-util</artifactId>
             <version>${protobuf.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-compress</artifactId>
-            <version>1.21</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.8.0</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
@@ -233,45 +203,11 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpmime</artifactId>
-            <version>${httpclient.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.spotify</groupId>
-            <artifactId>futures-extra</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.api</groupId>
-            <artifactId>api-common</artifactId>
-            <version>1.9.0</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.12.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -286,8 +222,6 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -340,35 +274,12 @@
                             <inputDirectories>
                                 <include>src/main/protobufs</include>
                             </inputDirectories>
-                            <!--<outputDirectory>src/generated-sources/proto</outputDirectory>-->
+                            <!-- Note outputDirectory defaults to target/generated-sources/id/unum/protos which works great-->
                             <!--<outputDirectory>src/main/java/id/unum/protos</outputDirectory>-->
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-assembly-plugin</artifactId>-->
-            <!--                <version>3.3.0</version>-->
-
-            <!--                <configuration>-->
-            <!--                    <descriptorRefs>-->
-            <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
-            <!--                    </descriptorRefs>-->
-            <!--                </configuration>-->
-
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>make-assembly</id>-->
-            <!--                        <phase>package</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>single</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-
-            <!--            </plugin>-->
         </plugins>
     </build>
 
