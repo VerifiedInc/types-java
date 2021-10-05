@@ -11,7 +11,7 @@
 
     <!--The following info is necessary per https://central.sonatype.org/publish/requirements/-->
     <name>UnumID Java Types</name>
-    <description>An library of java objects used in the Unum ID ecosystem</description>
+    <description>A library of java objects used in the Unum ID ecosystem</description>
     <url>https://github.com/UnumID/types-java</url>
 
     <licenses>
