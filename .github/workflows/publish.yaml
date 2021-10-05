@@ -64,7 +64,7 @@ jobs:
           cache: 'maven'
           #          server-id: maven # Value of the distributionManagement/repository/id field of the pom.xml
           server-username: ${{ secrets.OSSRH_USERNAME }} #MAVEN_USERNAME # env variable for username in deploy
-          server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }} #MAVEN_CENTRAL_TOKEN # env variable for token in deploy
+          server-password: ${{ secrets.OSSRH_TOKEN }} #MAVEN_CENTRAL_TOKEN # env variable for token in deploy
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }} # env variable for GPG private key passphrase
 
@@ -72,7 +72,7 @@ jobs:
         run: mvn deploy
         env:
           MAVEN_USERNAME: maven_username123
-          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       # ref: https://github.com/marketplace/actions/delete-tag-and-release
