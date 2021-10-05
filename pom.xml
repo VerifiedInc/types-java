@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.0.9</version>
 
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
@@ -86,6 +86,8 @@
             </distributionManagement>
             <build>
                 <plugins>
+                    <!-- ref: https://github.com/square/square-java-sdk/blob/master/pom.xml-->
+                    <!-- To release to Maven central -->
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -94,10 +96,38 @@
                         <configuration>
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <!--  Change to true once we're good! -->
-                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
+                    <!-- To generate javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.4</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- To sign the artifacts -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -110,21 +140,57 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <!-- Prevent gpg from using pinentry programs -->
-                                    <gpgArguments>
-                                        <arg>--pinentry-mode</arg>
-                                        <arg>loopback</arg>
-                                    </gpgArguments>
+                                    <!--                            &lt;!&ndash; This is necessary for gpg to not try to use the pinentry programs &ndash;&gt;-->
+                                    <!--                            <gpgArguments>-->
+                                    <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
+                                    <!--                                <arg>loopback</arg>-->
+                                    <!--                            </gpgArguments>-->
+                                    <keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</keyname>
+                                    <!--                            <passphraseServerId>${gpg.keyname}</passphraseServerId>-->
                                 </configuration>
                             </execution>
                         </executions>
-                        <configuration>
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
                     </plugin>
+
+                    <!--                    <plugin>-->
+                    <!--                        <groupId>org.sonatype.plugins</groupId>-->
+                    <!--                        <artifactId>nexus-staging-maven-plugin</artifactId>-->
+                    <!--                        <version>1.6.8</version>-->
+                    <!--                        <extensions>true</extensions>-->
+                    <!--                        <configuration>-->
+                    <!--                            <serverId>ossrh</serverId>-->
+                    <!--                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
+                    <!--                            &lt;!&ndash;  Change to true once we're good! &ndash;&gt;-->
+                    <!--                            <autoReleaseAfterClose>false</autoReleaseAfterClose>-->
+                    <!--                        </configuration>-->
+                    <!--                    </plugin>-->
+                    <!--                    <plugin>-->
+                    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+                    <!--                        <artifactId>maven-gpg-plugin</artifactId>-->
+                    <!--                        <version>1.6</version>-->
+                    <!--                        <executions>-->
+                    <!--                            <execution>-->
+                    <!--                                <id>sign-artifacts</id>-->
+                    <!--                                <phase>verify</phase>-->
+                    <!--                                <goals>-->
+                    <!--                                    <goal>sign</goal>-->
+                    <!--                                </goals>-->
+                    <!--                                <configuration>-->
+                    <!--                                    &lt;!&ndash; Prevent gpg from using pinentry programs &ndash;&gt;-->
+                    <!--                                    <gpgArguments>-->
+                    <!--                                        <arg>&#45;&#45;pinentry-mode</arg>-->
+                    <!--                                        <arg>loopback</arg>-->
+                    <!--                                    </gpgArguments>-->
+                    <!--                                </configuration>-->
+                    <!--                            </execution>-->
+                    <!--                        </executions>-->
+                    <!--                        <configuration>-->
+                    <!--                            <gpgArguments>-->
+                    <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
+                    <!--                                <arg>loopback</arg>-->
+                    <!--                            </gpgArguments>-->
+                    <!--                        </configuration>-->
+                    <!--                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -403,28 +469,28 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-assembly-plugin</artifactId>-->
+            <!--                <version>3.3.0</version>-->
 
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
+            <!--                <configuration>-->
+            <!--                    <descriptorRefs>-->
+            <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--                    </descriptorRefs>-->
+            <!--                </configuration>-->
 
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>make-assembly</id>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>single</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
 
-            </plugin>
+            <!--            </plugin>-->
         </plugins>
     </build>
 
