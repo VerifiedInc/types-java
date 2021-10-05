@@ -37,17 +37,18 @@ signatures.
 
 Info [here](https://www.youtube.com/watch?v=b5D2EBjLp40) for how to populate your local m2 settings with proper access
 credentials. The credentials to https://s01.oss.sonatype.org/#welcome are in 1Password. The access token can be
-found [here](https://s01.oss.sonatype.org/#profile;User%20Token).
+found [here](https://s01.oss.sonatype.org/#profile;User%20Token). For examnple the key name that works on my machine
+is `A40CC86120560B5631B693172DE7B3CB0F11DB7F` and in order to specify it I use the `-Dgpg.keyname=`
 
 If using Java version 16 one might need to use [this](https://issues.sonatype.org/browse/NEXUS-27902) work around:
 
 ```
 export JDK_JAVA_OPTIONS='--illegal-access=warn
-mvn clean deploy -P ossrh
+mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
 ```
 
 Otherwise, if not using Java 16 simply will handle publishing to maven central.
 
 ```
-mvn clean deploy -P ossrh
+mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
 ```
