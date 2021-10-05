@@ -56,8 +56,8 @@ jobs:
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v2
         with: # running setup-java again overwrites the settings.xml
-          distribution: 'zulu' # See 'Supported distributions' for available options
-          java-version: '16'
+          distribution: 'temurin'
+          java-version: '11'
           cache: 'maven'
           server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
           server-username: MAVEN_USERNAME # env variable for username in deploy
