@@ -54,30 +54,6 @@
 <!--        <gpg.keyname>A40CC86120560B5631B693172DE7B3CB0F11DB7F</gpg.keyname>-->
     </properties>
 
-    <!--    <distributionManagement>-->
-    <!--        <downloadUrl>http://mojo.codehaus.org/</downloadUrl>-->
-    <!--        <status>deployed</status>-->
-    <!--    </distributionManagement>-->
-    <!--    <distributionManagement>-->
-    <!--        <snapshotRepository>-->
-    <!--            <id>ossrh</id>-->
-    <!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-    <!--        </snapshotRepository>-->
-    <!--        <repository>-->
-    <!--            <id>ossrh</id>-->
-    <!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-    <!--        </repository>-->
-    <!--    </distributionManagement>-->
-
-    <!--    ref: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#publishing-a-package-->
-    <!--    <distributionManagement>-->
-    <!--        <repository>-->
-    <!--            <id>github</id>-->
-    <!--            <name>GitHub UnumID Apache Maven Packages</name>-->
-    <!--            <url>https://maven.pkg.github.com/unumid/types-java</url>-->
-    <!--        </repository>-->
-    <!--    </distributionManagement>-->
-
     <!-- ref: https://www.baeldung.com/maven-profiles-->
     <profiles>
         <profile>
@@ -182,46 +158,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
-                    <!--                    <plugin>-->
-                    <!--                        <groupId>org.sonatype.plugins</groupId>-->
-                    <!--                        <artifactId>nexus-staging-maven-plugin</artifactId>-->
-                    <!--                        <version>1.6.8</version>-->
-                    <!--                        <extensions>true</extensions>-->
-                    <!--                        <configuration>-->
-                    <!--                            <serverId>ossrh</serverId>-->
-                    <!--                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
-                    <!--                            &lt;!&ndash;  Change to true once we're good! &ndash;&gt;-->
-                    <!--                            <autoReleaseAfterClose>false</autoReleaseAfterClose>-->
-                    <!--                        </configuration>-->
-                    <!--                    </plugin>-->
-                    <!--                    <plugin>-->
-                    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
-                    <!--                        <artifactId>maven-gpg-plugin</artifactId>-->
-                    <!--                        <version>1.6</version>-->
-                    <!--                        <executions>-->
-                    <!--                            <execution>-->
-                    <!--                                <id>sign-artifacts</id>-->
-                    <!--                                <phase>verify</phase>-->
-                    <!--                                <goals>-->
-                    <!--                                    <goal>sign</goal>-->
-                    <!--                                </goals>-->
-                    <!--                                <configuration>-->
-                    <!--                                    &lt;!&ndash; Prevent gpg from using pinentry programs &ndash;&gt;-->
-                    <!--                                    <gpgArguments>-->
-                    <!--                                        <arg>&#45;&#45;pinentry-mode</arg>-->
-                    <!--                                        <arg>loopback</arg>-->
-                    <!--                                    </gpgArguments>-->
-                    <!--                                </configuration>-->
-                    <!--                            </execution>-->
-                    <!--                        </executions>-->
-                    <!--                        <configuration>-->
-                    <!--                            <gpgArguments>-->
-                    <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
-                    <!--                                <arg>loopback</arg>-->
-                    <!--                            </gpgArguments>-->
-                    <!--                        </configuration>-->
-                    <!--                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -251,21 +187,6 @@
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.grpc</groupId>-->
-<!--            <artifactId>grpc-netty-shaded</artifactId>-->
-<!--            <version>${grpc.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.grpc</groupId>-->
-<!--            <artifactId>grpc-protobuf</artifactId>-->
-<!--            <version>${grpc.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.grpc</groupId>-->
-<!--            <artifactId>grpc-stub</artifactId>-->
-<!--            <version>${grpc.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -287,11 +208,6 @@
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>commons-cli</groupId>-->
-<!--            <artifactId>commons-cli</artifactId>-->
-<!--            <version>1.4</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
@@ -351,47 +267,13 @@
             <version>2.12.5</version>
         </dependency>
 
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish/javax.json &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.glassfish</groupId>-->
-        <!--            <artifactId>javax.json</artifactId>-->
-        <!--            <version>1.1.4</version>-->
-        <!--        </dependency>-->
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.yaml/snakeyaml &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.yaml</groupId>-->
-        <!--            <artifactId>snakeyaml</artifactId>-->
-        <!--            <version>1.26</version>-->
-        <!--        </dependency>-->
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.miracl.milagro.amcl/milagro-crypto-java &ndash;&gt;-->
-        <!--        <dependency>-->
-<!--            <groupId>org.miracl.milagro.amcl</groupId>-->
-<!--            <artifactId>milagro-crypto-java</artifactId>-->
-<!--            <version>0.4.0</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            &lt;!&ndash; Required if using Java 11+ as no longer bundled in the core libraries &ndash;&gt;-->
-<!--            <groupId>javax.xml.bind</groupId>-->
-<!--            <artifactId>jaxb-api</artifactId>-->
-<!--            <version>2.3.1</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            &lt;!&ndash; Required if using Java 11+ as no longer bundled in the core libraries &ndash;&gt;-->
-        <!--            <groupId>javax.annotation</groupId>-->
-        <!--            <artifactId>javax.annotation-api</artifactId>-->
-        <!--            <version>1.3.2</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -415,19 +297,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
 
-            <!-- To release to Maven central -->
-            <!--            <plugin>-->
-            <!--                <groupId>org.sonatype.plugins</groupId>-->
-            <!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
-            <!--                <version>1.6.8</version>-->
-            <!--                <extensions>true</extensions>-->
-            <!--                <configuration>-->
-            <!--                    <serverId>ossrh</serverId>-->
-            <!--                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
-            <!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
-            <!-- To generate javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -454,29 +323,7 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- To sign the artifacts -->
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-gpg-plugin</artifactId>-->
-            <!--                <version>1.6</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>sign-artifacts</id>-->
-            <!--                        <phase>verify</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>sign</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            &lt;!&ndash; This is necessary for gpg to not try to use the pinentry programs &ndash;&gt;-->
-            <!--                            <gpgArguments>-->
-            <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
-            <!--                                <arg>loopback</arg>-->
-            <!--                            </gpgArguments>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
+            
             <plugin>
                 <groupId>com.github.os72</groupId>
                 <artifactId>protoc-jar-maven-plugin</artifactId>
