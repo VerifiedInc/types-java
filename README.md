@@ -13,7 +13,7 @@ References: [1](https://medium.com/@knoldus/compile-protocol-buffers-using-maven
 , [2](https://developers.google.com/protocol-buffers/docs/reference/java-generated)
 , [3](https://developers.google.com/protocol-buffers/docs/javatutorial)
 
-## Release
+## Maven Artifact Publishing
 
 ### Github Maven Packages
 
@@ -35,20 +35,24 @@ version one needs to setup their local env to have proper access rights and a GP
 Information [here](https://central.sonatype.org/publish/requirements/gpg/) for how to create and pubish a GPG key for
 signatures.
 
-Info [here](https://www.youtube.com/watch?v=b5D2EBjLp40) for how to populate your local m2 settings with proper access
-credentials. The credentials to https://s01.oss.sonatype.org/#welcome are in 1Password. The access token can be
+Information [here](https://www.youtube.com/watch?v=b5D2EBjLp40) for how to populate your local m2 settings with proper
+access credentials. The credentials to https://s01.oss.sonatype.org/#welcome are in 1Password. The access token can be
 found [here](https://s01.oss.sonatype.org/#profile;User%20Token). For examnple the key name that works on my machine
-is `A40CC86120560B5631B693172DE7B3CB0F11DB7F` and in order to specify it I use the `-Dgpg.keyname=`
+is `A40CC86120560B5631B693172DE7B3CB0F11DB7F` and in order to specify it I use the `-Dgpg.keyname=` environment
+variable.
 
 If using Java version 16 one might need to use [this](https://issues.sonatype.org/browse/NEXUS-27902) work around:
+
+To publish to maven central use the following command with your local key name/identifier.
+
+```
+mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
+```
+
+If not using Java 16 this work around is necessary [[1]](https://issues.sonatype.org/browse/NEXUS-27902).
 
 ```
 export JDK_JAVA_OPTIONS='--illegal-access=warn
 mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
 ```
 
-Otherwise, if not using Java 16 simply will handle publishing to maven central.
-
-```
-mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
-```
