@@ -69,8 +69,6 @@ jobs:
 
       - name: print settings
         run: |
-          cat settings.xml
-          echo "done"
           cat ~/.m2/settings.xml
 
       - name: Publish to Apache Maven Central
