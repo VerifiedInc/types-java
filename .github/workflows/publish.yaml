@@ -49,7 +49,7 @@ jobs:
 
       - name: Publish to GitHub Packages Apache Maven
         #        run: mvn --batch-mode deploy
-        run: mvn deploy -P github
+        run: mvn clean deploy -P github
         env:
           GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
 
