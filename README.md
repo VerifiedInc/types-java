@@ -52,7 +52,7 @@ mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
 If not using Java 16 this work around is necessary [[1]](https://issues.sonatype.org/browse/NEXUS-27902).
 
 ```
-export JDK_JAVA_OPTIONS='--illegal-access=warn
+export JDK_JAVA_OPTIONS='--illegal-access=warn'
 mvn clean deploy -P ossrh -Dgpg.keyname=A40CC86120560B5631B693172DE7B3CB0F11DB7F
 ```
 

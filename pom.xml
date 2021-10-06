@@ -39,7 +39,6 @@
     <properties>
         <grpc.version>1.38.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
         <protobuf.version>3.17.3</protobuf.version>
-        <httpclient.version>4.5.13</httpclient.version>
         <log4j.version>2.14.0</log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gpg.executable>gpg</gpg.executable>
