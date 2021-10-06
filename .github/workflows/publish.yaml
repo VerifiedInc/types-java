@@ -55,31 +55,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
 
-      #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
-      #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
-      #        ref: https://docs.github.com/en/actions/publishing-packages/publishing-java-packages-with-maven#publishing-packages-to-the-maven-central-repository-and-github-packages
-      #      - name: Set up Apache Maven Central
-      #        uses: actions/setup-java@v2
-      #        with: # running setup-java again overwrites the settings.xml
-      #          distribution: 'temurin'
-      #          java-version: '11'
-      #          cache: 'maven'
-      #          server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
-      #          server-username: MAVEN_USERNAME # env variable for username in deploy
-      #          server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
-      #          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
-      #          gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
-      #
-      #      - name: print settings
-      #        run: |
-      #          cat ~/.m2/settings.xml
-      #
-      #      - name: Publish to Apache Maven Central
-      #        run: mvn clean deploy -P ossrh -X -e
-      #        env:
-      #          MAVEN_USERNAME: rsmets
-      #          MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
-      #          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+            #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
+            #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
+          #        ref: https://docs.github.com/en/actions/publishing-packages/publishing-java-packages-with-maven#publishing-packages-to-the-maven-central-repository-and-github-packages
+      - name: Set up Apache Maven Central
+        uses: actions/setup-java@v2
+        with: # running setup-java again overwrites the settings.xml
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+          server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: MAVEN_USERNAME # env variable for username in deploy
+          server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
+
+      - name: print settings
+        run: |
+          cat ~/.m2/settings.xml
+
+      - name: Publish to Apache Maven Central
+        run: mvn clean deploy -P ossrh -X -e
+        env:
+          MAVEN_USERNAME: rsmets
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       # ref: https://github.com/marketplace/actions/delete-tag-and-release
       - name: Delete the v tag
