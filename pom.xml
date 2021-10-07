@@ -6,7 +6,7 @@
 
     <groupId>id.unum</groupId>
     <artifactId>types-java</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.8</version>
     <packaging>jar</packaging>
 
     <!--The following info is necessary per https://central.sonatype.org/publish/requirements/-->
