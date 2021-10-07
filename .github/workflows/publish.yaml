@@ -43,6 +43,10 @@ jobs:
           #          java-version: '16'
           cache: 'maven'
 
+      - name: print settings
+        run: |
+          cat ~/.m2/settings.xml
+          
       - name: Bump POM Version
         run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
 
