@@ -46,7 +46,7 @@ jobs:
       - name: print settings
         run: |
           cat ~/.m2/settings.xml
-          
+
       - name: Bump POM Version
         run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }}
 
@@ -58,10 +58,10 @@ jobs:
         run: mvn clean deploy -P github
         env:
           GITHUB_TOKEN: ${{ github.token }} # GITHUB_TOKEN is the default env for the password
-
-            #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
-            #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
-          #        ref: https://docs.github.com/en/actions/publishing-packages/publishing-java-packages-with-maven#publishing-packages-to-the-maven-central-repository-and-github-packages
+      #
+      #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
+      #        ref: https://www.marcd.dev/articles/2021-03/mvncentral-publish-github
+      #        ref: https://docs.github.com/en/actions/publishing-packages/publishing-java-packages-with-maven#publishing-packages-to-the-maven-central-repository-and-github-packages
       - name: Set up Apache Maven Central
         uses: actions/setup-java@v2
         with: # running setup-java again overwrites the settings.xml
@@ -95,18 +95,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Bump release version
-        id: bump_version
-        uses: christian-draeger/increment-semantic-version@1.0.2
-        with:
-          current-version: ${{ env.RELEASE_VERSION }}
-          version-fragment: 'bug'
-
-      - name: Add SNAPSHOT to new version
-        run: mvn versions:set -DnewVersion=${{ steps.bump_version.outputs.next-version }}-SNAPSHOT
-
       # ref: https://github.com/marketplace/actions/add-commit
-      - name: Commit changes
+      - name: Commit Release
         uses: EndBug/add-and-commit@v7
         with:
           author_name: UnumID Admin
@@ -133,14 +123,34 @@ jobs:
           prerelease: false
           commitish: main
 
-#      # ref: https://github.com/marketplace/actions/upload-files-to-a-github-release
-#      - name: Upload binaries to release
-#        uses: svenstaro/upload-release-action@v2
-#        with:
-#          repo_token: ${{ secrets.GITHUB_TOKEN }}
-#          # opting to go with thin jar here because not really an executable project
-#          #          file: target/types-java-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
-#          file: target/types-java-${{ env.RELEASE_VERSION }}.jar
-#          tag: ${{ env.RELEASE_VERSION }}
-#          body: ${{ env.TAG_MESSAGE }}
-##          commitish: pub # sadly doesn't work with this action, always release from main, which in reality is fine.
+      #      # ref: https://github.com/marketplace/actions/upload-files-to-a-github-release
+      #      - name: Upload binaries to release
+      #        uses: svenstaro/upload-release-action@v2
+      #        with:
+      #          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #          # opting to go with thin jar here because not really an executable project
+      #          #          file: target/types-java-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
+      #          file: target/types-java-${{ env.RELEASE_VERSION }}.jar
+      #          tag: ${{ env.RELEASE_VERSION }}
+      #          body: ${{ env.TAG_MESSAGE }}
+      ##          commitish: pub # sadly doesn't work with this action, always release from main, which in reality is fine.
+
+      - name: Bump to new patch version
+        id: bump_version
+        uses: christian-draeger/increment-semantic-version@1.0.2
+        with:
+          current-version: ${{ env.RELEASE_VERSION }}
+          version-fragment: 'bug'
+
+      - name: Add SNAPSHOT to new version
+        run: mvn versions:set -DnewVersion=${{ steps.bump_version.outputs.next-version }}-SNAPSHOT
+
+      # ref: https://github.com/marketplace/actions/add-commit
+      - name: Commit prep for new version changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: UnumID Admin
+          author_email: liam@unum.id
+          message: '[Automated Prep for Next Version] ${{ steps.bump_version.outputs.next-version }}-SNAPSHOT'
+          add: '["pom.xml"]'
+          branch: main
