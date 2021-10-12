@@ -22,6 +22,7 @@ message PresentationRequestEnriched {
     string deeplink = 5;
     string qrCode = 6;
 }
+
 /**
  * Type to encapsulate a PresentationRequest Data Transfer Object from the PresentationRequestRepository service.
  */
