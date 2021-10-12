@@ -26,7 +26,7 @@ message Receipt {
  * Object to encapsulate presentation verified receipt data
  */
  message PresentationVerifiedReceiptOptions {
-    repeated string type = 1;
+    string type = 1;
     string verifier = 2; // did
     string subject = 3; // did
     Verified data = 4;
@@ -36,4 +36,8 @@ message Verified {
     bool isVerified = 1;
     repeated string credentialTypes = 2;
     repeated string issuers = 3;
+    string reason = 4;
+    string reply = 5;
+    string requestId = 6;
+    string requestUuid = 7;
 }
