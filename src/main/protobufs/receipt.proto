@@ -25,7 +25,7 @@ message Receipt {
 /**
  * Object to encapsulate presentation verified receipt data
  */
- message PresentationVerifedReceiptOptions {
+ message PresentationVerifiedReceiptOptions {
     repeated string type = 1;
     string verifier = 2; // did
     string subject = 3; // did
